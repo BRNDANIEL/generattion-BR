@@ -37,7 +37,7 @@ public class TemaController {
 	}
 	
 	@PutMapping("/atualizarTema")
-	public ResponseEntity<Tema> atualizarUsuario (Tema TemaParaAtualizar){
+	public ResponseEntity<Tema> atualizarCategoria (Tema TemaParaAtualizar){
 		return ResponseEntity.status(201).body(repository.save(TemaParaAtualizar));}
 	
 

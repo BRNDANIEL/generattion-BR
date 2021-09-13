@@ -1,12 +1,20 @@
 package com.blog.pessoal.atividade.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.validation.constraints.Email;
 @Entity
 @Table(name="usuario")
@@ -16,6 +24,11 @@ public class Usuario {
 	private @NotBlank String nome;
 	private @NotBlank @Email  String email;
 	private @NotBlank @Size(min=8) String senha;
+	
+	@OneToMany(mappedBy = "criador", cascade =CascadeType.REMOVE)
+	@JsonIgnoreProperties({"criador"})
+	private List<Postagem> MinhasPostagens = new ArrayList<>();
+	
 	public Long getIdUsuario() {
 		return idUsuario;
 	}

@@ -6,8 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name="postagem")
@@ -20,6 +25,15 @@ public class Postagem {
 	private @NotBlank String descricao;
 	private @NotBlank Date data;
 	
+	@ManyToOne
+	@JoinColumn(name="criador_id")
+	@JsonIgnoreProperties({"MinhasPostagens"})
+	private Usuario criador;
+	
+	@ManyToOne
+	@JoinColumn(name="tema_id")
+	@JsonIgnoreProperties({"postagens"})
+	private Tema temaRelacionado;
 	
 	
 	public Long getIdPostagem() {
