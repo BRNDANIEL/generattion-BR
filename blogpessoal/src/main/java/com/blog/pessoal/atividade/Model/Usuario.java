@@ -53,6 +53,20 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public void setToken(String autorizacaoHeader) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setId(Long idUsuario2) {
+		// TODO Auto-generated method stub
+		
+	}
+	public List<Postagem> getMinhasPostagens() {
+		return MinhasPostagens;
+	}
+	public void setMinhasPostagens(List<Postagem> minhasPostagens) {
+		MinhasPostagens = minhasPostagens;
+	}
 	
 	
 	

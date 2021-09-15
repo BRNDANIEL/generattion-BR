@@ -60,6 +60,18 @@ public class Postagem {
 	public void setData(Date data) {
 		this.data = data;
 	}
+	public Usuario getCriador() {
+		return criador;
+	}
+	public void setCriador(Usuario criador) {
+		this.criador = criador;
+	}
+	public Tema getTemaRelacionado() {
+		return temaRelacionado;
+	}
+	public void setTemaRelacionado(Tema temaRelacionado) {
+		this.temaRelacionado = temaRelacionado;
+	}
 	
 	
 	

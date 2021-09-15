@@ -39,5 +39,12 @@ public class Tema {
 	public void setTema(String tema) {
 		this.tema = tema;
 	}
+	public List<Postagem> getPostagens() {
+		return postagens;
+	}
+	public void setPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
+	}
+	
 	
 }
