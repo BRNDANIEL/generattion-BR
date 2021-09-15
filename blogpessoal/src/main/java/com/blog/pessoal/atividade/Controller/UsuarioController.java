@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.blog.pessoal.atividade.Model.Usuario;
 import com.blog.pessoal.atividade.Repository.UsuarioRepository;
+import com.blog.pessoal.atividade.Service.UsuarioService;
+import com.blog.pessoal.atividade.Utilities.UsuarioLogin;
 
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
-	
+	private @Autowired UsuarioService servicos;
 	private @Autowired UsuarioRepository repository;
 	
 	//@GetMapping("/tudo")
@@ -40,7 +42,7 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> cadastrarUsuario(Usuario novoUsuario){
 		return ResponseEntity.status(201).body(repository.save(novoUsuario));}
 	
-	@PostMapping("/criarUsuario")
+	@PostMapping("/criarusuario")
 	public ResponseEntity<Usuario> criarUsuario	(@Valid @RequestBody Usuario novoUsuario){
 		return ResponseEntity.status(201).body(repository.save(novoUsuario));
 	}
@@ -83,7 +85,22 @@ public class UsuarioController {
 				.map(emailencontrado -> ResponseEntity.ok(emailencontrado))
 		.orElse(ResponseEntity.notFound().build());
 	}
+	@PutMapping("/credenciais")
+    public ResponseEntity<Object> credenciais(@Valid @RequestBody UsuarioLogin usuarioParaAutenticar) {
+        Optional<?> objetoOptional = servicos.autenticador(usuarioParaAutenticar);
+
+        if (objetoOptional.isEmpty()) {
+            return ResponseEntity.status(400).build();
+        } else {
+            return ResponseEntity.status(201).body(objetoOptional.get());
+        }
+    }
+
+
 }
+
+
+
 
 
 

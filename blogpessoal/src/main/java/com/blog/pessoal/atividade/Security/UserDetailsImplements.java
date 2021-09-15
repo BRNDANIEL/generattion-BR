@@ -1,4 +1,4 @@
-package Security;
+package com.blog.pessoal.atividade.Security;
 
 import java.util.Collection;
 import java.util.List;
